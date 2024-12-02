@@ -8,6 +8,7 @@ def get_distance(first_column: list[int], second_column: list[int]) -> int:
 
     return sum
 
+
 def get_distance2(first_column: list[int], second_column: list[int]) -> int:
     second_column.sort()
     repeated = {}
@@ -34,13 +35,12 @@ def get_distance2(first_column: list[int], second_column: list[int]) -> int:
 if __name__ == "__main__":
     first_column: list[int] = []
     second_column: list[int] = []
-    data: list[str] = open("input.txt", "r")
-
-    # Transform data
-    for line in data:
-        numbers = line.split("   ")
-        first_column.append(int(numbers[0]))
-        second_column.append(int(numbers[1][:-1]))
+    with open("input.txt", "r") as data:
+        # Transform data
+        for line in data:
+            numbers = line.split("   ")
+            first_column.append(int(numbers[0]))
+            second_column.append(int(numbers[1][:-1]))
     
     print(get_distance(first_column, second_column))
     print(get_distance2(first_column, second_column))
