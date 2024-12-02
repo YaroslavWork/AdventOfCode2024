@@ -11,17 +11,33 @@ def check_if_code_is_safe(code: list[int]) -> bool:
         
     return True
 
+def check_if_code_is_safe_without_level(code: list[int]) -> bool:
+    if check_if_code_is_safe(code):
+        return True
+    
+    for i in range(len(code)):
+        code_without_level = code[:i] + code[i+1:]
+        if check_if_code_is_safe(code_without_level):
+            return True
+    return False
 
 if __name__ == "__main__":
     codes: list[list[int]] = []
-    data: list[str] = open("input.txt", "r")
 
-    for line in data:
-        code_str = line.split(" ")
-        codes.append(list(map(int, code_str)))
+    with open("input.txt", "r") as data:
+        for line in data:
+            code_str = line.split(" ")
+            codes.append(list(map(int, code_str)))
 
     count_save_codes = 0
     for code in codes:
         count_save_codes += check_if_code_is_safe(code)
 
     print(count_save_codes)
+
+    #Second part
+    count_save_codes_by_removing_a_digit = 0
+    for code in codes:
+        count_save_codes_by_removing_a_digit += check_if_code_is_safe_without_level(code)
+
+    print(count_save_codes_by_removing_a_digit)
