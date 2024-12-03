@@ -1,4 +1,4 @@
-def find_a_mul_sequence_and_return_sum(sequence):
+def find_a_mul_sequence_and_return_sum(sequence: str) -> int:
     # Split by 'mul('
     start_with_prefix = sequence.split("mul(")
 
@@ -20,8 +20,21 @@ def find_a_mul_sequence_and_return_sum(sequence):
     return sum
 
 
+def find_a_mul_sequence_with_access_and_return_sum(sequence: str) -> int:
+    starts_with_do = sequence.split("do()")
+    
+    # If var contains a 'don't()' cut it
+    for i in range(len(starts_with_do)):
+        starts_with_do[i] = starts_with_do[i].split("don't()")[0]
+
+    return find_a_mul_sequence_and_return_sum("".join(starts_with_do))
+        
+    
+
+
 if __name__ == "__main__":
     with open("input.txt", "r") as file:
-        sequence = file.read()
+        sequence: str = file.read()
     
     print(find_a_mul_sequence_and_return_sum(sequence))
+    print(find_a_mul_sequence_with_access_and_return_sum(sequence))
