@@ -1,6 +1,9 @@
 def check_word_normally_and_reverse(word: str, check_word: str) -> bool:
     return word == check_word or word[::-1] == check_word
 
+def check_if_it_is_mas(letter1, letter2) -> bool:
+    return letter1 == "M" and letter2 == "S" or letter1 == "S" and letter2 == "M"
+
 def word_search(words: list[str]) -> int:
     SEARCH_WORD = "XMAS"
     count = 0
@@ -36,6 +39,18 @@ def word_search(words: list[str]) -> int:
     return count
 
 
+def find_x_mas(words: list[str]) -> int:
+    count = 0
+
+    for i in range(1, len(words)-1):
+        for j in range(1, len(words)-1):
+            
+            if words[i][j] == "A" and check_if_it_is_mas(words[i-1][j-1], words[i+1][j+1]) and\
+                check_if_it_is_mas(words[i+1][j-1], words[i-1][j+1]):
+                count += 1
+
+    return count
+
 if __name__ == '__main__':
     words: list[str] = []
     with open('input.txt', 'r') as file:
@@ -43,3 +58,4 @@ if __name__ == '__main__':
             words.append(line[:-1])  # Cut \n
 
     print(word_search(words))
+    print(find_x_mas(words))
