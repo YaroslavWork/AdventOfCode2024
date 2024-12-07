@@ -48,11 +48,11 @@ def find_loops(size_width: int, size_height: int, objects: list[tuple], guard: l
     main_direction = 0
     main_pos = [guard[0], guard[1]]
     objects_making_loops_pos = []
-
+    
     while True:
         memo_pos_with_dir = []
-        sim_pos = [guard[0], guard[1]]
-        sim_direction = 0
+        sim_pos = [main_pos[0], main_pos[1]]
+        sim_direction = main_direction
         main_step = next_move(size_width, size_height, objects, main_pos, main_direction)
         if main_step is None:
             return len(set(objects_making_loops_pos))
@@ -93,4 +93,4 @@ if __name__ == '__main__':
         size_height = i+1
     
     print(find_visit_by_guard_positions(size_width, size_height, objects, guard))
-    print(find_loops(size_width, size_height, objects, guard))
+    print(find_loops(size_width, size_height, objects, guard))  # 3.5 minutes
