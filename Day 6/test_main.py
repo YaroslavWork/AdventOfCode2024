@@ -2,7 +2,7 @@ import unittest
 from main import find_visit_by_guard_positions, next_move, find_loops
 
 
-class TestGetDistance(unittest.TestCase):
+class TestGuardsPos(unittest.TestCase):
     def test_helper_function_get_true(self):
         self.assertEqual(next_move(10, 10, [], [2, 1], 0), [2, 0, 0])
         self.assertEqual(next_move(10, 10, [], [2, 1], 1), [3, 1, 1])

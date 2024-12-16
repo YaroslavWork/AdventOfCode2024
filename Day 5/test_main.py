@@ -27,7 +27,7 @@ pages = [
 ]
 
 
-class TestGetDistance(unittest.TestCase):
+class TestOrders(unittest.TestCase):
     def test_first_sample(self):
         self.assertIsInstance(check_if_order_is_right(pages, [75, 47, 61, 53, 29]), int)
         self.assertIsInstance(check_if_order_is_right(pages, [97, 61, 53, 29, 13]), int)

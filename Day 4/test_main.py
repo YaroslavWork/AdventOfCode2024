@@ -1,7 +1,7 @@
 import unittest
 from main import word_search, check_word_normally_and_reverse, find_x_mas, check_if_it_is_mas
 
-class TestGetDistance(unittest.TestCase):
+class TestWordSearch(unittest.TestCase):
     def test_helper_function_get_true(self):
         self.assertTrue(check_word_normally_and_reverse("XMAS", "XMAS"))
         self.assertTrue(check_word_normally_and_reverse("SAMX", "XMAS"))
